@@ -120,6 +120,8 @@ if (LDD_RETURN STREQUAL "0")
   set(crypto_lib ${CMAKE_MATCH_1})
   string(REGEX MATCH "[ \t](/[^ ]+/libkrb5support\\.[^ \n]+)" dummy ${LDD_OUT})
   set(krb5support_lib ${CMAKE_MATCH_1})
+  string(REGEX MATCH "[ \t](/[^ ]+/libunwind\\.[^ \n]+)" dummy ${LDD_OUT})
+  set(libunwind_lib ${CMAKE_MATCH_1})
 endif ()
 
 HT_INSTALL_LIBS(lib ${dbi_lib} ${directfb_lib} ${fusion_lib} ${direct_lib}
@@ -131,7 +133,7 @@ HT_INSTALL_LIBS(lib ${dbi_lib} ${directfb_lib} ${fusion_lib} ${direct_lib}
                 ${Xau_lib} ${Xdmcp_lib} ${ssl_lib} ${gssapi_krb5_lib}
                 ${krb5_lib} ${com_err_lib} ${k5crypto_lib} ${crypto_lib}
                 ${krb5support_lib} ${Xrender_lib} ${rrd_lib} ${intl_lib}
-                ${freetype_lib})
+                ${freetype_lib} ${libunwind_lib})
 
 # General package variables
 if (NOT CPACK_PACKAGE_NAME)
